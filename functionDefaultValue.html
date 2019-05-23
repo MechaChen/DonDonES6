@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // for ECMAscript 6
+      function sayHello1(word = "Hello") {
+        document.write(word, "<br>");
+      }
+      document.write("Say Hello function for ECAMscipt 6 : ");
+      sayHello1();
+      // for ECAMscript 5
+      function sayHello2(word) {
+        word = word || "Hello";
+        document.write(word, "<br>");
+      }
+      document.write("Say Hello function for ECAMscipt 5 : ");
+      sayHello2();
+    </script>
+  </body>
+</html>

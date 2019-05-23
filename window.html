@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="submit" value="確認" onclick="del()" />
+    <script>
+      function del() {
+        const psn = window.prompt("請輸入您的書號");
+        const confirm = window.confirm("您確定要刪除 " + psn + " 號書?");
+        if (confirm) {
+          window.location.href = "https://www.books.com.tw";
+        }
+      }
+    </script>
+  </body>
+</html>

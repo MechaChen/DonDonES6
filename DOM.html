@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      li {
+        display: inline-block;
+      }
+      li + li::before {
+        content: ">";
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="location">
+      <ul>
+        <li><a href="javascript:;">博客來</a></li>
+        <li><a href="javascript:;">外文書</a></li>
+        <li><a href="javascript:;">文學</a></li>
+      </ul>
+    </div>
+    <form>
+      <label for="book">請輸入書名</label>
+      <input type="text" name="book" id="book" />
+      <input type="submit" value="搜尋" />
+    </form>
+    <script>
+      const book = document.getElementById("book");
+      book.style.backgroundColor = "#aaf";
+      book.placeholder = "Javascript 大全";
+
+      const breadCrumb = document.getElementsByTagName("li");
+      console.log(breadCrumb);
+      breadCrumb[0].style.color = "#faf";
+    </script>
+  </body>
+</html>

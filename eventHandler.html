@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input name="btn" type="submit" value="10+20=?" />
+    <input name="btn" type="submit" value="10+20=?" />
+    <input name="btn" type="submit" value="10+20=?" onCilck="alert('Hello')" />
+
+    <script>
+      const btns = document.getElementsByName("btn");
+      btns[0].addEventListener("click", function() {
+        sum(10, 20);
+      });
+      btns[1].addEventListener("click", function() {
+        sum(10, 20);
+      });
+      btns[1].addEventListener("click", delightful);
+
+      //   btns[2].addEventListener("click", noAns);
+
+      function sum(a, b) {
+        alert(a + b);
+      }
+      function delightful() {
+        alert("(=￣ω￣=)");
+        btns[1].removeEventListener("click", delightful);
+        btns[1].addEventListener("click", angry);
+      }
+      function angry() {
+        alert("<(￣ ﹌ ￣)>");
+      }
+      function noAns() {
+        alert("q>_____<p");
+      }
+    </script>
+  </body>
+</html>

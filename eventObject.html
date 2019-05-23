@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      table {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      td {
+        padding: 10px 15px;
+        font-size: 18px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="1">
+      <tbody>
+        <tr>
+          <td>aaaaa</td>
+          <td>11111</td>
+        </tr>
+        <tr>
+          <td>bbbbb</td>
+          <td>22222</td>
+        </tr>
+        <tr>
+          <td>ccccc</td>
+          <td>33333</td>
+        </tr>
+        <tr>
+          <td>ddddd</td>
+          <td>44444</td>
+        </tr>
+        <tr>
+          <td>eeeee</td>
+          <td>55555</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      function highlight(e) {
+        const td = e.target;
+        td.style.backgroundColor = "tomato";
+        td.style.color = "indigo";
+      }
+
+      function normal(e) {
+        const td = e.target;
+        td.style.backgroundColor = "#fff";
+        td.style.color = "#000";
+      }
+
+      function init() {
+        const tds = document.getElementsByTagName("td");
+        for (var i = 0; i < tds.length; i++) {
+          tds[i].addEventListener("mouseover", highlight);
+          tds[i].addEventListener("mouseout", normal);
+        }
+      }
+
+      window.onload = init;
+    </script>
+  </body>
+</html>

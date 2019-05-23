@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+      }
+      td {
+        width: 200px;
+        height: 100px;
+      }
+      .wrap {
+        width: 800px;
+        margin: auto;
+        text-align: center;
+        display: flex;
+        width: 100%;
+        flex-flow: row wrap;
+        justify-content: center;
+      }
+      input {
+        margin: 20px;
+      }
+      td.show {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <table>
+        <tr>
+          <td class="step" id="c1"></td>
+          <td class="step" id="c2"></td>
+          <td class="step" id="c3"></td>
+          <td class="step" id="c4"></td>
+        </tr>
+        <tr>
+          <td class="step" id="c12"></td>
+          <td colspan="2" rowspan="2"></td>
+          <td class="step" id="c5"></td>
+        </tr>
+
+        <tr>
+          <td class="step" id="c11"></td>
+          <td class="step" id="c6"></td>
+        </tr>
+
+        <tr>
+          <td class="step" id="c10"></td>
+          <td class="step" id="c9"></td>
+          <td class="step" id="c8"></td>
+          <td class="step" id="c7"></td>
+        </tr>
+      </table>
+
+      <input type="button" id="bingo" value="Let's go!" />
+    </div>
+
+    <script>
+      var timerId;
+      var num = 0;
+      var randRun;
+      var go = document.getElementById("bingo");
+
+      //random函數
+      function rand(min, max) {
+        var num = min + Math.floor(Math.random() * (max - min + 1));
+        return num;
+      }
+
+      //按鍵啟動
+      function start() {
+        reset();
+        randRun = rand(20, 30);
+        bonus = "獎金" + rand(10, 100000) * 100;
+        timerId = setInterval(run, 100);
+        go.disabled = true;
+      }
+
+      function run() {
+        console.log(num);
+        num++;
+        randRun -= 1;
+        if (num >= 13) {
+          num = 1;
+        }
+        var run = document.getElementById("c" + num);
+        run.classList.add("show");
+
+        var remove = document.getElementById("c" + (num - 1));
+        if (num <= 1) {
+          document.getElementById("c12").classList.remove("show");
+        } else {
+          remove.classList.remove("show");
+        }
+
+        if (randRun < 1) {
+          clearInterval(timerId);
+          go.disabled = false;
+          run.innerHTML = bonus;
+          console.log(randRun);
+        }
+      }
+
+      //歸零
+      function reset() {
+        if (num > 0) {
+          for (a = 1; a < 13; a++) {
+            document.getElementById("c" + a).innerHTML = " ";
+            document.getElementById("c" + a).classList.remove("show");
+          }
+          num = 0;
+        }
+      }
+
+      function init() {
+        go.onclick = start;
+      }
+
+      window.addEventListener("load", init, false);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+      .toggle input {
+        width: 100px;
+        height: 30px;
+      }
+    </style>
+    <title>Fade in, Fade out(onclick)</title>
+  </head>
+  <body>
+    <center>
+      <input type="button" id="btnOut" value="淡出" /><br />
+      <input type="button" id="btnIn" value="淡入" /><br />
+      <div class="toggle">
+        <input type="button" id="btnInOut" value="淡入" /><br />
+      </div>
+      <img src="melon.gif" alt="小玉" id="img1" style="opacity:1" />
+    </center>
+  </body>
+</html>
+<script>
+  var opacity = 1;
+  var timer = 100;
+  var timerId;
+  var btnInOut = $id("btnInOut");
+  console.log(btnInOut);
+
+  function $id(id) {
+    return document.getElementById(id);
+  }
+
+  function fade(opInter, finalOp) {
+    var img = $id("img1");
+    img.style.opacity = opacity += opInter;
+    if (finalOp == 0) {
+      if (opacity < 0) clearInterval(timerId);
+    } else {
+      if (opacity > 1) clearInterval(timerId);
+    }
+  }
+
+  function decreaseOpacity() {
+    timerId = setInterval(() => fade(-0.05, 0), timer);
+  }
+
+  function increaseOpacity() {
+    // var img = $id("img1");
+    // const fadeInTimer = setInterval(function() {
+    //   img.style.opacity = opacity += 0.2;
+    //   if (opacity > 1) clearInterval(fadeInTimer);
+    // }, timer);
+    timerId = setInterval(() => fade(0.05, 1), timer);
+  }
+
+  function fadeInOut(opInter) {
+    var img = $id("img1");
+    btnInOut.disabled = true;
+    if (btnInOut.value == "淡入") {
+      img.style.opacity = opacity -= opInter;
+      console.log(opacity);
+      if (opacity < 0) {
+        clearInterval(timerId);
+        btnInOut.disabled = false;
+        btnInOut.value = "淡出";
+      }
+    } else {
+      img.style.opacity = opacity += opInter;
+      console.log(opacity);
+      if (opacity > 1) {
+        clearInterval(timerId);
+        btnInOut.disabled = false;
+        btnInOut.value = "淡入";
+      }
+    }
+  }
+
+  function toggleOpacity() {
+    timerId = setInterval(() => fadeInOut(0.05), timer);
+  }
+
+  //點下去做淡入/淡出的切換
+  function init() {
+    //...設定變數的初始值
+    var btnOut = $id("btnOut");
+    var btnIn = $id("btnIn");
+    // console.log(btnInOut);
+    //...設定事件處理器
+    btnOut.addEventListener("click", decreaseOpacity);
+    btnIn.addEventListener("click", increaseOpacity);
+    btnInOut.addEventListener("click", toggleOpacity);
+  }
+
+  window.addEventListener("load", init);
+</script>

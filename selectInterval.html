@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .count_down_box {
+        border: 1px solid #ccc;
+        width: 400px;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        font-size: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="count_down_box">5</div>
+    <script>
+      var timerId = 5;
+      var time = 5;
+
+      function countDown() {
+        const countDownBox = document.getElementsByClassName(
+          "count_down_box"
+        )[0];
+        if (time > 0) {
+          time -= 1;
+          countDownBox.innerHTML = time;
+        } else {
+          countDownBox.innerHTML = "Happy New Year";
+          clearInterval(timerId);
+        }
+      }
+
+      function init() {
+        const countDownBox = document.getElementsByClassName(
+          "count_down_box"
+        )[0];
+        // console.log(countDownBox);
+        setInterval(countDown, 1000);
+      }
+
+      window.onload = init;
+    </script>
+  </body>
+</html>

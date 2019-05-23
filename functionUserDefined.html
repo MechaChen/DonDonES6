@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Arguments</h2>
+    <script>
+      function addNum(a, b, c) {
+        let total = 0;
+        for (let i = 0; i < arguments.length; i++) {
+          total += arguments[i];
+        }
+        document.write("總和：", total);
+      }
+      addNum(11, 22, 33);
+    </script>
+
+    <h2>避免和原 window 所提供的原函數同名</h2>
+    <script>
+      // 原 alert 會被複寫
+      function alert() {
+        document.write("下課嚕~~~");
+      }
+      alert();
+    </script>
+  </body>
+</html>

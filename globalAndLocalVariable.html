@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Global vs Local</h2>
+    <script>
+      var a;
+      a = 10;
+      var b = 20;
+      c = 30;
+
+      function test() {
+        var d = 40;
+        a = 100;
+        d = 400;
+        // 會在外面自動宣告一為 e 的變數
+        e = 500;
+      }
+      test();
+
+      document.write("a:", a, "<br>");
+      document.write("b:", b, "<br>");
+      document.write("c:", c, "<br>");
+      document.write("e:", e, "<br>");
+      document.write("d:", d, "<br>");
+    </script>
+
+    <h2>Dangerous!!!</h2>
+    <script>
+      function sum() {
+        total = 0;
+        for (i = 0; i < arguments.length; i++) {
+          total += arguments[i];
+        }
+        return total;
+      }
+
+      var i = 666;
+      var total = 0;
+
+      var subTotal = sum(11, 22);
+      document.write("subTotal : ", subTotal, "<br>");
+      document.write("i : ", i, "<br>");
+    </script>
+  </body>
+</html>
